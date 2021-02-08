@@ -31,7 +31,6 @@ DEBUG = env.bool("DEBUG", default=True)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-
 # Application definition
 
 BASE_APPS = [
@@ -43,7 +42,7 @@ BASE_APPS = [
     "django.contrib.staticfiles",
 ]
 
-CUSTOM_APPS = ["rest_framework"]
+CUSTOM_APPS = ["rest_framework", "accounts.apps.AccountsConfig"]
 
 INSTALLED_APPS = BASE_APPS + CUSTOM_APPS
 
@@ -77,12 +76,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "pricetracker.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {"default": env.db()}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -96,7 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -109,7 +105,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
