@@ -10,6 +10,7 @@ djangorestframework = "*"
 black = "*"
 pre-commit = "*"
 psycopg2-binary = "*"
+pillow = "*"
 
 [dev-packages]
 

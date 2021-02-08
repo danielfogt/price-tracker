@@ -110,13 +110,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-DEFAULT_STATIC_ROOT = BASE_DIR / ".." / "volumes" / "static"
+DEFAULT_STATIC_ROOT = BASE_DIR / "volumes" / "static"
 STATIC_ROOT = env("STATIC_ROOT", default=DEFAULT_STATIC_ROOT)
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Media files
 MEDIA_URL = "/media/"
-DEFAULT_MEDIA_ROOT = BASE_DIR / ".." / "volumes" / "media"
+DEFAULT_MEDIA_ROOT = BASE_DIR / "volumes" / "media"
 MEDIA_ROOT = env("MEDIA_URL", default=DEFAULT_MEDIA_ROOT)
 
 CACHES = {"default": env.cache(default="dummycache://")}
