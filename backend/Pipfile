@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-environ = "*"
+djangorestframework = "*"
+black = "*"
+pre-commit = "*"
 
 [dev-packages]
 
