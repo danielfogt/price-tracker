@@ -42,7 +42,11 @@ BASE_APPS = [
     "django.contrib.staticfiles",
 ]
 
-CUSTOM_APPS = ["rest_framework", "accounts.apps.AccountsConfig"]
+CUSTOM_APPS = [
+    "rest_framework",
+    "accounts.apps.AccountsConfig",
+    "products.apps.ProductsConfig",
+]
 
 INSTALLED_APPS = BASE_APPS + CUSTOM_APPS
 

@@ -13,6 +13,7 @@ psycopg2-binary = "*"
 pillow = "*"
 pytest = "*"
 pytest-django = "*"
+tldextract = "*"
 
 [dev-packages]
 
