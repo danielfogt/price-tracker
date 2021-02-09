@@ -11,6 +11,8 @@ black = "*"
 pre-commit = "*"
 psycopg2-binary = "*"
 pillow = "*"
+pytest = "*"
+pytest-django = "*"
 
 [dev-packages]
 
