@@ -1,5 +1,7 @@
+import os
+
 from django.core.management.base import BaseCommand
-from products.scrapers.ceneo.ceneo.spiders.products_spider import ProductsSpider
+from products.scrapers.ceneo.spiders.products_spider import ProductsSpider
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 

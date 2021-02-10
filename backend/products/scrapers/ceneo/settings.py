@@ -1,4 +1,4 @@
-# Scrapy settings for ceneo project
+# Scrapy settings for scrapers project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,12 +9,12 @@
 
 BOT_NAME = "ceneo"
 
-SPIDER_MODULES = ["ceneo.spiders"]
-NEWSPIDER_MODULE = "ceneo.spiders"
+SPIDER_MODULES = ["products.scrapers.ceneo.spiders"]
+NEWSPIDER_MODULE = "products.scrapers.ceneo.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'ceneo (+http://www.yourdomain.com)'
+# USER_AGENT = 'scrapers (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -62,7 +62,7 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {"ceneo.pipelines.CeneoPipeline": 300}
+ITEM_PIPELINES = {"products.scrapers.ceneo.pipelines.CeneoPipeline": 300}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
