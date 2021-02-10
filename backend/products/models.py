@@ -22,11 +22,12 @@ class ShopData(models.Model):
 
 
 class Product(models.Model):
-    product_name = models.CharField(
-        verbose_name=_("Product name"), unique=True, max_length=255
-    )
+    product_name = models.CharField(verbose_name=_("Product name"), max_length=255)
     last_parsing_data = models.DateTimeField(
         verbose_name=_("Last parsing price product date"), null=True, blank=True
+    )
+    last_parsed_price = models.FloatField(
+        verbose_name=_("Last parsed price"), null=True, blank=True
     )
     users = models.ManyToManyField(
         User,
@@ -34,8 +35,8 @@ class Product(models.Model):
         blank=True,
         related_name="favourite_products",
     )
-    url_to_scrape_product = models.URLField(
-        verbose_name=_("Url to scrape product"), unique=True
+    url_to_scrape_product = models.CharField(
+        verbose_name=_("Url to scrape product"), unique=True, max_length=1000
     )
 
     class Meta:
@@ -60,18 +61,6 @@ class ProductShop(models.Model):
     ean = models.CharField(
         verbose_name=_("EAN Code"), max_length=17, blank=True, null=True
     )
-    price = models.FloatField(
-        verbose_name=_("Gross Price"),
-        blank=False,
-        null=False,
-        validators=[MinValueValidator(0, _("Price cannot be less than 0!"))],
-    )
-    delivery_price = models.FloatField(
-        verbose_name=_("Delivery Price"),
-        blank=False,
-        null=False,
-        validators=[MinValueValidator(0, _("Price cannot be less than 0!"))],
-    )
     url_to_shop = models.URLField(verbose_name=_("Url to shop"), unique=True)
     shop = models.ForeignKey(
         ShopData,
@@ -87,6 +76,35 @@ class ProductShop(models.Model):
 
     def __str__(self):
         return self.url_to_shop
+
+
+class ParsedProductPrice(models.Model):
+    product = models.ForeignKey(
+        ProductShop,
+        verbose_name=_("Product"),
+        related_name="historical_price",
+        on_delete=models.CASCADE,
+        null=True,
+    )
+    price = models.FloatField(
+        verbose_name=_("Gross Price"),
+        blank=False,
+        null=False,
+        validators=[MinValueValidator(0, _("Price cannot be less than 0!"))],
+    )
+    delivery_price = models.FloatField(
+        verbose_name=_("Delivery Price"),
+        blank=False,
+        null=False,
+        validators=[MinValueValidator(0, _("Price cannot be less than 0!"))],
+    )
+
+    class Meta:
+        verbose_name = "Parsed product price"
+        verbose_name_plural = "Parsed product prices"
+
+    def __str__(self):
+        return self.product_id
 
     @property
     def total_price(self):

@@ -7,5 +7,5 @@ from scrapy_djangoitem import DjangoItem
 from products.models import Product
 
 
-class CeneoItem(DjangoItem):
+class CeneoProduct(DjangoItem):
     django_model = Product
